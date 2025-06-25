@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: url('https://images.unsplash.com/photo-1607082349566-187342175e2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      background: url('https://images.unsplash.com/photo-1607082349566-187342175e2c?ixlib=rb-4.0.0&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
       color: #222;
       min-height: 100vh;
       display: flex;
@@ -143,7 +143,11 @@
     <p class="description">Sizning go‘zalligingiz – bizning ilhomimiz ✨</p>
     <div class="slogans">
       <p>Yorqin teri — ishonchli kayfiyat.</p>
+      <p>Go‘zallik — bu sizga munosib parvarish.</p>
+      <p>Chiroyli bo‘ling, o‘zingiz uchun!</p>
       <p>Go‘zallik – bu o‘ziga bo‘lgan mehrdan boshlanadi.</p>
+      <p>Siz uchun eng nozik xizmatlar!</p>
+      <p>Iltimos band qilishda e'tiborli bo'ling </p>
     </div>
 
     <form>
@@ -157,7 +161,7 @@
       <textarea id="address" name="address" rows="3" required placeholder="Majburiy maydon"></textarea>
 
       <label for="date">Sanani tanlang</label>
-      <input type="date" id="date" name="date" required placeholder="Majburiy maydon" />
+      <input type="date" id="date" name="date" required placeholder="Majburiy maydon" min="" />
 
       <label>Band qilmoqchi bo‘lgan vaqtingiz</label>
       <div class="time-slots" id="timeSlots">
@@ -178,7 +182,7 @@
       📞 Aloqa uchun: <strong>+998 94 143 28 28</strong>
     </div>
 
-    <div class="footer">© urinboy.umarovich </div>
+    <div class="footer">© Dr. Mushtariy 2025</div>
   </div>
 
   <script>
@@ -187,6 +191,13 @@
         document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
         slot.classList.add('selected');
       });
+    });
+
+    // Sanani bugungi kundan oldin tanlashni cheklash
+    document.addEventListener('DOMContentLoaded', () => {
+      const dateInput = document.getElementById('date');
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.min = today;
     });
   </script>
 </body>
