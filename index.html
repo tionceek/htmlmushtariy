@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+      background: url('https://images.unsplash.com/photo-1618477388954-7856ce7d89d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
       color: #222;
       min-height: 100vh;
       display: flex;
@@ -21,7 +21,7 @@
       width: 90%;
       max-width: 480px;
       padding: 40px 30px;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 24px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     }
@@ -48,8 +48,7 @@
     }
 
     input,
-    textarea,
-    select {
+    textarea {
       width: 100%;
       padding: 14px;
       margin-bottom: 22px;
@@ -61,11 +60,34 @@
     }
 
     input:focus,
-    textarea:focus,
-    select:focus {
+    textarea:focus {
       border-color: #7b4397;
       outline: none;
       box-shadow: 0 0 0 3px rgba(123, 67, 151, 0.1);
+    }
+
+    .time-slots {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .time-slot {
+      padding: 12px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .time-slot:hover,
+    .time-slot.selected {
+      background-color: #7b4397;
+      color: white;
+      border-color: #7b4397;
     }
 
     button {
@@ -92,12 +114,36 @@
       font-size: 14px;
       color: #aaa;
     }
+
+    .contact-info {
+      margin-top: 25px;
+      text-align: center;
+      color: #555;
+    }
+
+    .stickers {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .stickers img {
+      width: 36px;
+      height: 36px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Go‘zallikni biz bilan sayqallang</h1>
-    <p class="description">Hoziroq o‘zingizga qulay vaqtda bron qiling</p>
+    <p class="description">Sizning go‘zalligingiz – bizning ilhomimiz ✨</p>
+
+    <div class="stickers">
+      <img src="https://cdn-icons-png.flaticon.com/512/709/709699.png" alt="icon">
+      <img src="https://cdn-icons-png.flaticon.com/512/3209/3209447.png" alt="icon">
+      <img src="https://cdn-icons-png.flaticon.com/512/814/814513.png" alt="icon">
+    </div>
 
     <form>
       <label for="name">Ism va familiyangiz</label>
@@ -109,23 +155,35 @@
       <label for="address">Yashash manzilingiz</label>
       <textarea id="address" name="address" rows="3" required></textarea>
 
-      <label for="time">Band qilmoqchi bo‘lgan vaqt</label>
-      <select id="time" name="time" required>
-        <option value="">Vaqtni tanlang</option>
-        <option value="10:00">10:00</option>
-        <option value="11:00">11:00</option>
-        <option value="12:00">12:00</option>
-        <option value="13:00">13:00</option>
-        <option value="14:00">14:00</option>
-        <option value="15:00">15:00</option>
-        <option value="16:00">16:00</option>
-        <option value="17:00">17:00</option>
-      </select>
+      <label>Band qilmoqchi bo‘lgan vaqt</label>
+      <div class="time-slots" id="timeSlots">
+        <div class="time-slot">10:00</div>
+        <div class="time-slot">11:00</div>
+        <div class="time-slot">12:00</div>
+        <div class="time-slot">13:00</div>
+        <div class="time-slot">14:00</div>
+        <div class="time-slot">15:00</div>
+        <div class="time-slot">16:00</div>
+        <div class="time-slot">17:00</div>
+      </div>
 
       <button type="submit">📋 Joyni bron qilish</button>
     </form>
 
+    <div class="contact-info">
+      📞 Aloqa uchun: <strong>+998 94 143 28 28</strong>
+    </div>
+
     <div class="footer">© Dr. Mushtariy 2025</div>
   </div>
+
+  <script>
+    document.querySelectorAll('.time-slot').forEach(slot => {
+      slot.addEventListener('click', () => {
+        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+        slot.classList.add('selected');
+      });
+    });
+  </script>
 </body>
 </html>
