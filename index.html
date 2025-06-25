@@ -3,381 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kosmetologiya - Online Bron</title>
+    <title>Dr. Mushtariy - Bron qilish</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            color: #222;
         }
-        
+
         .container {
             max-width: 500px;
-            margin: 20px auto;
-            padding: 20px;
+            margin: 0 auto;
+            padding: 30px 20px;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 24px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
         }
-        
-        .header {
+
+        h1 {
             text-align: center;
+            font-size: 24px;
+            color: #4a00e0;
+            margin-bottom: 10px;
+        }
+
+        p.description {
+            text-align: center;
+            font-size: 16px;
+            color: #555;
             margin-bottom: 30px;
         }
-        
-        .header h1 {
-            color: #764ba2;
-            margin-bottom: 10px;
-            font-size: 28px;
-        }
-        
-        .header p {
-            color: #666;
-            font-size: 16px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
+
         label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #555;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #333;
         }
-        
-        input, select, textarea {
+
+        input, textarea, select {
             width: 100%;
             padding: 12px;
-            border: 2px solid #e1e5e9;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-        
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        
-        .time-slots {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .time-slot {
-            padding: 12px;
-            background: #f8f9fa;
-            border: 2px solid #e1e5e9;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .time-slot:hover {
-            background: #e3f2fd;
-            border-color: #667eea;
-        }
-        
-        .time-slot.selected {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-        
-        .time-slot.booked {
-            background: #ffebee;
-            color: #c62828;
-            border-color: #e57373;
-            cursor: not-allowed;
-        }
-        
-        .btn {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-        
-        .btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .success-message {
-            background: #e8f5e8;
-            color: #2e7d32;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 20px;
-            display: none;
-        }
-        
-        .error-message {
-            background: #ffebee;
-            color: #c62828;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 20px;
-            display: none;
-        }
-        
-        .work-hours {
-            background: #f0f4f8;
-            padding: 15px;
-            border-radius: 10px;
             margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: inherit;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #7a1ecb, #3d00c0);
+        }
+
+        .footer {
             text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #aaa;
         }
-        
-        .work-hours h3 {
-            color: #764ba2;
-            margin-bottom: 5px;
-        }
-        
-        @media (max-width: 480px) {
+
+        @media screen and (max-width: 480px) {
             .container {
-                margin: 10px;
-                padding: 15px;
-            }
-            
-            .time-slots {
-                grid-template-columns: 1fr;
-            }
-            
-            .header h1 {
-                font-size: 24px;
+                margin: 20px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>💅 Kosmetologiya</h1>
-            <p>Online bron qilish tizimi</p>
-        </div>
-        
-        <div class="work-hours">
-            <h3>📅 Ish vaqti</h3>
-            <p>Dushanba - Shanba: 10:00 - 18:00</p>
-        </div>
-        
-        <form id="bookingForm">
-            <div class="form-group">
-                <label for="clientName">👤 To'liq ismingiz</label>
-                <input type="text" id="clientName" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="clientPhone">📞 Telefon raqamingiz</label>
-                <input type="tel" id="clientPhone" required placeholder="+998 90 123 45 67">
-            </div>
-            
-            <div class="form-group">
-                <label for="clientAddress">🏠 Yashash manzilingiz</label>
-                <textarea id="clientAddress" rows="3" required placeholder="Viloyat, tuman/shahar, ko'cha..."></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label for="bookingDate">📅 Sanani tanlang</label>
-                <input type="date" id="bookingDate" required>
-            </div>
-            
-            <div class="form-group">
-                <label>🕐 Vaqtni tanlang</label>
-                <div class="time-slots" id="timeSlots">
-                    <!-- JavaScript bilan to'ldiriladi -->
-                </div>
-            </div>
-            
-            <button type="submit" class="btn" id="submitBtn">📋 Bron qilish</button>
+        <h1>Go‘zallikni biz bilan sayqallang</h1>
+        <p class="description">Hoziroq joyingizni bron qiling</p>
+
+        <form>
+            <label for="name">Ism va familiyangiz</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">Telefon raqamingiz</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="address">Yashash manzilingiz</label>
+            <textarea id="address" name="address" rows="3" required></textarea>
+
+            <label for="time">Band qilmoqchi bo‘lgan vaqt</label>
+            <select id="time" name="time" required>
+                <option value="">Vaqtni tanlang</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+            </select>
+
+            <button type="submit">Bron qilish</button>
         </form>
-        
-        <div class="success-message" id="successMessage">
-            <h3>✅ Muvaffaqiyatli!</h3>
-            <p>Sizning bronlashingiz qabul qilindi. Tez orada aloqaga chiqamiz!</p>
-        </div>
-        
-        <div class="error-message" id="errorMessage">
-            <p>Xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring.</p>
-        </div>
+
+        <div class="footer">© Dr. Mushtariy 2025</div>
     </div>
-
-    <script>
-        // Bot tokeni va chat ID (haqiqiy qiymatlarni kiriting)
-        const BOT_TOKEN = '7968385485:AAFsOLySr50dtv3zSMVR_UjwyImMOennQgw';
-        const CHAT_ID = '6336027050';
-        
-        // Bron qilingan vaqtlarni saqlash (haqiqiy loyihada ma'lumotlar bazasida saqlanadi)
-        let bookedSlots = JSON.parse(localStorage.getItem('bookedSlots') || '{}');
-        
-        // Vaqt oralig'ini yaratish
-        function generateTimeSlots() {
-            const slots = [];
-            for (let hour = 10; hour < 18; hour++) {
-                slots.push(`${hour.toString().padStart(2, '0')}:00`);
-            }
-            return slots;
-        }
-        
-        // Vaqt slotlarini ko'rsatish
-        function displayTimeSlots() {
-            const timeSlotsContainer = document.getElementById('timeSlots');
-            const selectedDate = document.getElementById('bookingDate').value;
-            const timeSlots = generateTimeSlots();
-            
-            timeSlotsContainer.innerHTML = '';
-            
-            timeSlots.forEach(time => {
-                const slotDiv = document.createElement('div');
-                slotDiv.className = 'time-slot';
-                slotDiv.textContent = time;
-                slotDiv.dataset.time = time;
-                
-                // Bron qilingan vaqtlarni tekshirish
-                const slotKey = `${selectedDate}_${time}`;
-                if (bookedSlots[slotKey]) {
-                    slotDiv.classList.add('booked');
-                    slotDiv.textContent += ' (Band)';
-                } else {
-                    slotDiv.addEventListener('click', () => selectTimeSlot(slotDiv));
-                }
-                
-                timeSlotsContainer.appendChild(slotDiv);
-            });
-        }
-        
-        // Vaqt slotini tanlash
-        function selectTimeSlot(slot) {
-            if (slot.classList.contains('booked')) return;
-            
-            document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
-            slot.classList.add('selected');
-        }
-        
-        // Sanani o'zgarganda vaqt slotlarini yangilash
-        document.getElementById('bookingDate').addEventListener('change', displayTimeSlots);
-        
-        // Bugungi sanani minimal qiymat sifatida o'rnatish
-        document.getElementById('bookingDate').min = new Date().toISOString().split('T')[0];
-        
-        // Telegram botga xabar yuborish
-        async function sendToTelegram(message) {
-            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-            
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        chat_id: CHAT_ID,
-                        text: message,
-                        parse_mode: 'HTML'
-                    })
-                });
-                
-                return response.ok;
-            } catch (error) {
-                console.error('Telegram xabar yuborishda xatolik:', error);
-                return false;
-            }
-        }
-        
-        // Formani yuborish
-        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const name = document.getElementById('clientName').value;
-            const phone = document.getElementById('clientPhone').value;
-            const address = document.getElementById('clientAddress').value;
-            const date = document.getElementById('bookingDate').value;
-            const selectedSlot = document.querySelector('.time-slot.selected');
-            
-            if (!selectedSlot) {
-                document.getElementById('errorMessage').textContent = 'Iltimos, vaqtni tanlang!';
-                document.getElementById('errorMessage').style.display = 'block';
-                return;
-            }
-            
-            const time = selectedSlot.dataset.time;
-            const slotKey = `${date}_${time}`;
-            
-            // Bron qilish
-            bookedSlots[slotKey] = {
-                name,
-                phone,
-                address,
-                date,
-                time,
-                timestamp: new Date().toISOString()
-            };
-            
-            localStorage.setItem('bookedSlots', JSON.stringify(bookedSlots));
-            
-            // Telegram xabari
-            const message = `
-🆕 <b>Yangi bron!</b>
-
-👤 <b>Mijoz:</b> ${name}
-📞 <b>Telefon:</b> ${phone}
-🏠 <b>Manzil:</b> ${address}
-📅 <b>Sana:</b> ${date}
-🕐 <b>Vaqt:</b> ${time}
-
-<b>Bronni bekor qilish uchun:</b> /cancel_${slotKey.replace('_', '_')}
-            `;
-            
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Yuborilmoqda...';
-            
-            const sent = await sendToTelegram(message);
-            
-            if (sent) {
-                document.getElementById('bookingForm').style.display = 'none';
-                document.getElementById('successMessage').style.display = 'block';
-            } else {
-                document.getElementById('errorMessage').textContent = 'Xabar yuborishda xatolik. Qaytadan urinib ko\'ring.';
-                document.getElementById('errorMessage').style.display = 'block';
-                submitBtn.disabled = false;
-                submitBtn.textContent = '📋 Bron qilish';
-            }
-        });
-        
-        // Sahifa yuklanganda
-        document.addEventListener('DOMContentLoaded', () => {
-            // Bugungi sanani standart qiymat sifatida o'rnatish
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('bookingDate').value = today;
-            displayTimeSlots();
-        });
-    </script>
 </body>
 </html>
